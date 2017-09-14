@@ -1,0 +1,44 @@
+{
+    "sortToTop": [
+        "name",
+        "version",
+        "description",
+        "author",
+        "authors",
+        "contributors",
+        "team",
+        "homepage",
+        "bugs",
+        "repository"
+    ],
+    "required": [
+        "name",
+        "version"
+    ],
+    "warn": [
+        "description",
+        "team",
+        "repository",
+        "keywords",
+        "main",
+        "bugs",
+        "homepage"
+    ],
+    "requiredOnPrivate": [],
+    "warnOnPrivate": [
+        "name",
+        "version",
+        "description",
+        "main"
+    ],
+    "sortedSubItems": [
+        "dependencies",
+        "devDependencies"
+    ],
+    "quiet": false,
+    "files": [
+        "package.json",
+        "bower.json"
+    ],
+    "wipe": false
+}
