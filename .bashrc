@@ -1,3 +1,9 @@
+##############
+# cd scripts #
+##############
+
+alias cdp="cd /media/sf_Projects/"
+
 ###############
 # git scripts #
 ###############
