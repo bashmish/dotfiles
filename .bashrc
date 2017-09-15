@@ -33,6 +33,24 @@ polymer_vbserve () {
   polymer serve --hostname 10.0.2.15
 }
 
+#################
+# proxy scripts #
+#################
+
+proxy_on () {
+  export http_proxy="http://localhost:3128"
+  export https_proxy="http://localhost:3128"
+  export ftp_proxy="http://localhost:3128"
+  export rsync_proxy="http://localhost:3128"
+}
+
+proxy_off () {
+  unset http_proxy
+  unset https_proxy
+  unset ftp_proxy
+  unset rsync_proxy
+}
+
 ####################
 # workflow scripts #
 ####################
