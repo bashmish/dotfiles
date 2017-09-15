@@ -32,3 +32,25 @@ export NVM_DIR="$HOME/.nvm"
 polymer_vbserve () {
   polymer serve --hostname 10.0.2.15
 }
+
+####################
+# workflow scripts #
+####################
+
+mvifexists () {
+  if [ -f $1 ]; then
+    mv $1 $2
+  fi
+}
+
+backpmrc () {
+  mvifexists ~/.bowerrc ~/_bowerrc
+  mvifexists ~/.npmrc ~/_npmrc
+  mvifexists ~/.yarnrc ~/_yarnrc
+}
+
+unbackpmrc () {
+  mvifexists ~/_bowerrc ~/.bowerrc
+  mvifexists ~/_npmrc ~/.npmrc
+  mvifexists ~/_yarnrc ~/.yarnrc
+}
