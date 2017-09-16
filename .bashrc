@@ -103,3 +103,8 @@ unbackpmrc () {
   mvifexists ~/_npmrc ~/.npmrc
   mvifexists ~/_yarnrc ~/.yarnrc
 }
+
+reinstallnodeselenium () {
+  rm -rf ./node_modules/selenium-standalone/.selenium
+  ./node_modules/selenium-standalone/bin/selenium-standalone install
+}
