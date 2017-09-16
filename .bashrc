@@ -55,6 +55,28 @@ proxy_off () {
   unset rsync_proxy
 }
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  proxy_wifi_on () {
+    sudo networksetup -setwebproxystate "Wi-Fi" on
+    sudo networksetup -setsecurewebproxystate "Wi-Fi" on
+  }
+
+  proxy_wifi_off () {
+    sudo networksetup -setwebproxystate "Wi-Fi" off
+    sudo networksetup -setsecurewebproxystate "Wi-Fi" off
+  }
+
+  proxy_ethernet_on () {
+    sudo networksetup -setwebproxystate "USB 10/100/1000 LAN" on
+    sudo networksetup -setsecurewebproxystate "USB 10/100/1000 LAN" on
+  }
+
+  proxy_ethernet_off () {
+    sudo networksetup -setwebproxystate "USB 10/100/1000 LAN" off
+    sudo networksetup -setsecurewebproxystate "USB 10/100/1000 LAN" off
+  }
+fi
+
 ####################
 # workflow scripts #
 ####################
