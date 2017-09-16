@@ -2,7 +2,11 @@
 # cd scripts #
 ##############
 
-alias cdp="cd /media/sf_Projects/"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias cdp="cd /Users/bashmish/Files/Projects/"
+else
+  alias cdp="cd /media/sf_Projects/"
+fi
 
 ###############
 # git scripts #
