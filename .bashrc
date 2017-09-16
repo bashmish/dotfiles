@@ -75,6 +75,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     sudo networksetup -setwebproxystate "USB 10/100/1000 LAN" off
     sudo networksetup -setsecurewebproxystate "USB 10/100/1000 LAN" off
   }
+
+  alias resolver_on="/etc/resolver/on.sh"
+  alias resolver_off="/etc/resolver/off.sh"
 fi
 
 ####################
