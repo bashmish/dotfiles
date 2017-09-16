@@ -46,6 +46,7 @@ proxy_on () {
   export https_proxy="http://localhost:3128"
   export ftp_proxy="http://localhost:3128"
   export rsync_proxy="http://localhost:3128"
+  export ssh_proxy="http://localhost:3128"
 }
 
 proxy_off () {
@@ -53,6 +54,7 @@ proxy_off () {
   unset https_proxy
   unset ftp_proxy
   unset rsync_proxy
+  unset ssh_proxy
 }
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
