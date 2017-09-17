@@ -2,14 +2,18 @@
 # bash-it                                                                      #
 ################################################################################
 
-# main path
 export BASH_IT="$HOME/.bash_it"
 
-# theme from $BASH_IT/themes/
-export BASH_IT_THEME='nwinkler'
+if [ -f "$BASH_IT/bash_it.sh" ]; then
+  # theme from $BASH_IT/themes/
+  export BASH_IT_THEME='nwinkler'
 
-# version control status checking
-export SCM_CHECK=true
+  # version control status checking
+  export SCM_CHECK=true
+
+  # load
+  source "$BASH_IT/bash_it.sh"
+fi
 
 ################################################################################
 # cd scripts                                                                   #
