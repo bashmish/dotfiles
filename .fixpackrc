@@ -9,7 +9,10 @@
         "team",
         "homepage",
         "bugs",
-        "repository"
+        "repository",
+        "dependencies",
+        "devDependencies",
+        "variants"
     ],
     "required": [
         "name",
