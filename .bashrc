@@ -57,9 +57,10 @@ export NVM_DIR="$HOME/.nvm"
 # polymer scripts                                                              #
 ################################################################################
 
-polymer_vbserve () {
+polymer_virtualbox_serve () {
   polymer serve --hostname 10.0.2.15
 }
+alias pvbs="polymer_virtualbox_serve"
 
 ################################################################################
 # proxy scripts                                                                #
