@@ -137,3 +137,11 @@ reinstallnodeselenium () {
   rm -rf ./node_modules/selenium-standalone/.selenium
   ./node_modules/selenium-standalone/bin/selenium-standalone install
 }
+
+################################################################################
+# private                                                                      #
+################################################################################
+
+if [ -f "$HOME/.bashrc_private" ]; then
+  source "$HOME/.bashrc_private"
+fi
