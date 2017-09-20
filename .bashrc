@@ -58,7 +58,11 @@ export NVM_DIR="$HOME/.nvm"
 ################################################################################
 
 polymer_virtualbox_serve () {
-  polymer serve --hostname 10.0.2.15
+  if [ -z "$1" ]
+    polymer serve --hostname 0.0.0.0 --port $1
+  then
+    polymer serve --hostname 0.0.0.0
+  fi
 }
 alias pvbs="polymer_virtualbox_serve"
 
