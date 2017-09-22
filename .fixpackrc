@@ -7,11 +7,14 @@
         "authors",
         "contributors",
         "team",
+        "main",
+        "keywords",
         "homepage",
         "bugs",
         "repository",
         "dependencies",
         "devDependencies",
+        "resolutions",
         "variants"
     ],
     "required": [
