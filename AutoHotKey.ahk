@@ -35,6 +35,40 @@ IfWinActive, ahk_exe chrome.exe
 }
 return
 
+; special symbols remappings like on Mac's Russian default layout
++SC005::EnforceLayoutSymbol(0x4190419, "%") ; Shift+4
++SC006::EnforceLayoutSymbol(0x4190419, ":") ; Shift+5
++SC007::EnforceLayoutSymbol(0x4190419, ",") ; Shift+6
++SC008::EnforceLayoutSymbol(0x4190419, ".") ; Shift+7
++SC009::EnforceLayoutSymbol(0x4190419, ";") ; Shift+8
+ SC035::EnforceLayoutSymbol(0x4190419, "/") ; /
++SC035::EnforceLayoutSymbol(0x4190419, "?") ; Shift+/
+
+EnforceLayoutSymbol(layout, symbol)
+{
+  WinGet, WinID,, A
+  ThreadID := DllCall("GetWindowThreadProcessId", "Int", WinID, "Int", 0)
+  KeyboardLayout := DllCall("GetKeyboardLayout", "Int", ThreadID)
+  if (KeyboardLayout == layout)
+  {
+    SendRaw %symbol%
+  }
+  else
+  {
+    OriginalHotKey := A_ThisHotkey
+    if OriginalHotKey contains +
+    {
+      StringReplace, OriginalHotKey, OriginalHotKey, +
+      Send +{%OriginalHotKey%}
+    }
+    else
+    {
+      Send {%OriginalHotKey%}
+    }
+  }
+  return
+}
+
 ;###############################################################################
 ; Custom bindings and remappings                                               #
 ;###############################################################################
