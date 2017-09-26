@@ -21,6 +21,20 @@ LCtrl & Space::
   Send {Ctrl Down}{Shift Down}{Shift Up}{Ctrl Up}
 return
 
+; Chrome and Chromium remappings
+IfWinActive, ahk_exe chrome.exe
+{
+  ; DevTools like Mac's Alt+Cmd+I
+  ^!SC017::Send {F12}
+
+  ; jump to the address bar like Mac's Cmd+L
+  ^SC026::Send !{SC020}
+
+  ; view page source like Mac's Alt+Cmd+U
+  !^SC016::Send ^{SC016}
+}
+return
+
 ;###############################################################################
 ; Custom bindings and remappings                                               #
 ;###############################################################################
