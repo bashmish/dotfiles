@@ -9,7 +9,7 @@ SetTitleMatchMode, 2
 ; LAlt (positioned as Cmd on Mac keyboard) is remapped to LCtrl (kinda new Cmd)
 ; LWin (positioned as Alt on Mac keyboard) is remapped to LAlt
 ; PrtSc is remapped to LWin (to be able to use Win sometimes)
-; lCtrl remains Ctrl to use it in Terminal as expected
+; LCtrl remains Ctrl to use it in Terminal as expected
 
 ; quit app like Mac's Cmd+Q
 LCtrl & Q::Send !{F4}
