@@ -38,6 +38,13 @@ return
 
 ; Terminal remappings
 #IfWinActive ahk_exe mintty.exe
+  ; copy-paste like Mac's Cmd+C and Cmd+V
+  >^SC02E::Send ^{Ins} ; Cmd+C => Ctrl+Ins
+  >^SC02F::Send +{Ins} ; Cmd+V => Shift+Ins
+
+  ; clear terminal like Mac's Cmd+R
+  >^SC013::Send ^{SC026} ; Cmd+R => Ctrl+L
+
   ; tmux controls
   ; (Ctrl+\ and numbers are used because work with any language layout)
   >^SC014::  Send {Ctrl Down}{\}{Ctrl Up}{1} ; Cmd+T
