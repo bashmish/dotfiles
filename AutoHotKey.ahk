@@ -6,19 +6,19 @@ SetTitleMatchMode, 2
 ;###############################################################################
 
 ; preliminary setup in SharpKeys
-; LAlt (positioned as Cmd on Mac keyboard) is remapped to LCtrl (kinda new Cmd)
+; LAlt (positioned as Cmd on Mac keyboard) is remapped to RCtrl (kinda new Cmd)
 ; LWin (positioned as Alt on Mac keyboard) is remapped to LAlt
 ; PrtSc is remapped to LWin (to be able to use Win sometimes)
 ; LCtrl remains Ctrl to use it in Terminal as expected
 
 ; quit app like Mac's Cmd+Q
-LCtrl & Q::Send !{F4}
+>^SC010::Send !{F4}
 
 ; window switch like Mac's Cmd+Tab
-LCtrl & Tab::AltTab
+>^Tab::AltTab
 
 ; language switch like Mac's Cmd+Space
-LCtrl & Space::
+>^Space::
   KeyWait, Space
   KeyWait, LCtrl
   Send {Ctrl Down}{Shift Down}{Shift Up}{Ctrl Up}
@@ -27,26 +27,26 @@ return
 ; Chrome and Chromium remappings
 #IfWinActive ahk_exe chrome.exe
   ; DevTools like Mac's Alt+Cmd+I
-  ^!SC017::Send {F12}
+  <!>^SC017::Send {F12}
 
   ; jump to the address bar like Mac's Cmd+L
-  ^SC026::Send !{SC020}
+  >^SC026::Send !{SC020}
 
   ; view page source like Mac's Alt+Cmd+U
-  !^SC016::Send ^{SC016}
+  <!>^SC016::Send ^{SC016}
 #IfWinActive
 
 ; Terminal remappings
 #IfWinActive ahk_exe mintty.exe
   ; tmux controls
   ; (Ctrl+\ and numbers are used because work with any language layout)
-  <^SC014::  Send {Ctrl Down}{\}{Ctrl Up}{1} ; Cmd+T
-  <^SC011::  Send {Ctrl Down}{\}{Ctrl Up}{2} ; Cmd+W
-  <^SC027::  Send {Ctrl Down}{\}{Ctrl Up}{3} ; Cmd+:
-  <^SC028::  Send {Ctrl Down}{\}{Ctrl Up}{4} ; Cmd+"
-  <!<^Left:: Send {Ctrl Down}{\}{Ctrl Up}{5} ; Alt+Cmd+Left
-  <!<^Right::Send {Ctrl Down}{\}{Ctrl Up}{6} ; Alt+Cmd+Right
-  !Tab::     Send {Ctrl Down}{\}{Ctrl Up}{7} ; Alt+Tab
+  >^SC014::  Send {Ctrl Down}{\}{Ctrl Up}{1} ; Cmd+T
+  >^SC011::  Send {Ctrl Down}{\}{Ctrl Up}{2} ; Cmd+W
+  >^SC027::  Send {Ctrl Down}{\}{Ctrl Up}{3} ; Cmd+:
+  >^SC028::  Send {Ctrl Down}{\}{Ctrl Up}{4} ; Cmd+"
+  <!>^Left:: Send {Ctrl Down}{\}{Ctrl Up}{5} ; Alt+Cmd+Left
+  <!>^Right::Send {Ctrl Down}{\}{Ctrl Up}{6} ; Alt+Cmd+Right
+  <!Tab::    Send {Ctrl Down}{\}{Ctrl Up}{7} ; Alt+Tab
 #IfWinActive
 
 ; special symbols remappings like on Mac's Russian default layout
