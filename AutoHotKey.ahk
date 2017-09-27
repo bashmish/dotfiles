@@ -26,6 +26,10 @@ return
 
 ; Chrome and Chromium remappings
 #IfWinActive ahk_exe chrome.exe
+  ; prev/next tab like Mac's Alt+Cmd+Left/Right
+  <!>^Left::Send ^{PgUp}
+  <!>^Right::Send ^{PgDn}
+
   ; DevTools like Mac's Alt+Cmd+I
   <!>^SC017::Send {F12}
 
