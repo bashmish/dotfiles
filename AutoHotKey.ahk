@@ -22,8 +22,7 @@ LCtrl & Space::
 return
 
 ; Chrome and Chromium remappings
-IfWinActive, ahk_exe chrome.exe
-{
+#IfWinActive ahk_exe chrome.exe
   ; DevTools like Mac's Alt+Cmd+I
   ^!SC017::Send {F12}
 
@@ -32,8 +31,7 @@ IfWinActive, ahk_exe chrome.exe
 
   ; view page source like Mac's Alt+Cmd+U
   !^SC016::Send ^{SC016}
-}
-return
+#IfWinActive
 
 ; special symbols remappings like on Mac's Russian default layout
 +SC005::EnforceLayoutSymbol(0x4190419, "%") ; Shift+4
