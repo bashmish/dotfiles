@@ -36,6 +36,19 @@ return
   !^SC016::Send ^{SC016}
 #IfWinActive
 
+; Terminal remappings
+#IfWinActive ahk_exe mintty.exe
+  ; tmux controls
+  ; (Ctrl+\ and numbers are used because work with any language layout)
+  <^SC014::  Send {Ctrl Down}{\}{Ctrl Up}{1} ; Cmd+T
+  <^SC011::  Send {Ctrl Down}{\}{Ctrl Up}{2} ; Cmd+W
+  <^SC027::  Send {Ctrl Down}{\}{Ctrl Up}{3} ; Cmd+:
+  <^SC028::  Send {Ctrl Down}{\}{Ctrl Up}{4} ; Cmd+"
+  <!<^Left:: Send {Ctrl Down}{\}{Ctrl Up}{5} ; Alt+Cmd+Left
+  <!<^Right::Send {Ctrl Down}{\}{Ctrl Up}{6} ; Alt+Cmd+Right
+  !Tab::     Send {Ctrl Down}{\}{Ctrl Up}{7} ; Alt+Tab
+#IfWinActive
+
 ; special symbols remappings like on Mac's Russian default layout
 +SC005::EnforceLayoutSymbol(0x4190419, "%") ; Shift+4
 +SC006::EnforceLayoutSymbol(0x4190419, ":") ; Shift+5
