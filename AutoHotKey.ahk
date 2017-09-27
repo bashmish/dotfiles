@@ -11,6 +11,9 @@ SetTitleMatchMode, 2
 ; PrtSc is remapped to LWin (to be able to use Win sometimes)
 ; lCtrl remains Ctrl to use it in Terminal as expected
 
+; quit app like Mac's Cmd+Q
+LCtrl & Q::Send !{F4}
+
 ; window switch like Mac's Cmd+Tab
 LCtrl & Tab::AltTab
 
