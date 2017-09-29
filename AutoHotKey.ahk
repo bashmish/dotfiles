@@ -30,6 +30,12 @@ SetTitleMatchMode, 2
   Send {Ctrl Down}{Shift Down}{Shift Up}{Ctrl Up}
 return
 
+; Internet Explorer remappings
+#IfWinActive ahk_class IEFrame
+  ; force refresh like Mac's Shift+Cmd+R in Chrome and others
+  <+>^SC013::Send ^{F5}
+#IfWinActive
+
 ; Chrome and Chromium remappings
 #IfWinActive ahk_exe chrome.exe
   ; prev/next tab like Mac's Alt+Cmd+Left/Right
