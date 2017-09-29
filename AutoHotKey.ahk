@@ -106,164 +106,31 @@ EnforceLayoutSymbol(layout, symbol)
 ; Fast switch between mostly used apps                                         #
 ;###############################################################################
 
-; Atom
-!a::
-IfWinExist, ahk_exe atom.exe
-{
-  WinActivate
-}
-else
-{
-  Run, "%LOCALAPPDATA%\atom\atom.exe"
-}
-return
+ !a::ActivateOrRunApp("ahk_exe atom.exe", LOCALAPPDATA . "\atom\atom.exe") ; Atom
+ !c::ActivateOrRunApp("- Google Chrome ahk_exe chrome.exe", LOCALAPPDATA . "\Google\Chrome\Application\chrome.exe") ; Chrome
++!c::ActivateOrRunApp("- Chromium ahk_exe chrome.exe", LOCALAPPDATA . "\Chromium\Application\chrome.exe") ; Chromium
+ !f::ActivateOrRunApp("ahk_class CabinetWClass ahk_exe explorer.exe", WINDIR . "\explorer.exe") ; File manager
++!f::ActivateOrRunApp("ahk_exe firefox.exe", LOCALAPPDATA . "\Mozilla Firefox\firefox.exe") ; Firefox
+ !g::ActivateOrRunApp("ahk_exe gitkraken.exe", LOCALAPPDATA . "\gitkraken\Update.exe --processStart gitkraken.exe") ; GitKraken
+ !i::ActivateOrRunApp("ahk_class IEFrame", ProgramFiles . "\Internet Explorer\iexplore.exe") ; Internet Explorer
+ !j::ActivateOrRunApp("ahk_exe idea64.exe", ProgramFiles . "\JetBrains\IntelliJ IDEA 2017.2.3\bin\idea64.exe") ; IntelliJ Idea
+ !o::ActivateOrRunApp("ahk_exe OUTLOOK.EXE", ProgramFiles . " (x86)\Microsoft Office\Office15\OUTLOOK.exe") ; Outlook
+ !s::ActivateOrRunApp("ahk_exe SourceTree.exe", LOCALAPPDATA . "\SourceTree\SourceTree.exe") ; SourceTree
+ !v::ActivateOrRunApp("ahk_exe VirtualBox.exe", ProgramFiles . "\Oracle\VirtualBox\VirtualBox.exe") ; VirtualBox
+ !w::ActivateOrRunApp("ahk_exe WorkFlowy.exe", LOCALAPPDATA . "\WorkFlowy\WorkFlowy.exe") ; WorkFlowy
+ !z::ActivateOrRunApp("ahk_exe mintty.exe", LOCALAPPDATA . "\Programs\Git\git-bash.exe") ; Terminal
 
-; Chrome
-!c::
-IfWinExist, - Google Chrome ahk_exe chrome.exe
+ActivateOrRunApp(title, app)
 {
-  WinActivate
+  IfWinExist, %title%
+  {
+    WinActivate
+  }
+  else
+  {
+    Run %app%
+    WinWait, %title%
+    WinActivate
+  }
+  return
 }
-else
-{
-  Run, "%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe"
-}
-return
-
-; Chromium
-+!c::
-IfWinExist, - Chromium ahk_exe chrome.exe
-{
-  WinActivate
-}
-else
-{
-  Run, "%LOCALAPPDATA%\Chromium\Application\chrome.exe"
-}
-return
-
-; File manager
-!f::
-IfWinExist, ahk_class CabinetWClass ahk_exe explorer.exe
-{
-  WinActivate
-}
-else
-{
-  Run, "%WINDIR%\explorer.exe"
-}
-return
-
-; Firefox
-+!f::
-IfWinExist, ahk_exe firefox.exe
-{
-  WinActivate
-}
-else
-{
-  Run, "%LOCALAPPDATA%\Mozilla Firefox\firefox.exe"
-  WinWait, ahk_exe firefox.exe
-  WinActivate
-}
-return
-
-; GitKraken
-!g::
-IfWinExist, ahk_exe gitkraken.exe
-{
-  WinActivate
-}
-else
-{
-  Run, "%LOCALAPPDATA%\gitkraken\Update.exe" --processStart "gitkraken.exe"
-}
-return
-
-; Internet Explorer
-!i::
-IfWinExist, ahk_class IEFrame
-{
-  WinActivate
-}
-else
-{
-  Run, "%ProgramFiles%\Internet Explorer\iexplore.exe"
-  WinWait, ahk_class IEFrame
-  WinActivate
-}
-return
-
-; IntelliJ Idea
-!j::
-IfWinExist, ahk_exe idea64.exe
-{
-  WinActivate
-}
-else
-{
-  Run, "%ProgramFiles%\JetBrains\IntelliJ IDEA 2017.2.3\bin\idea64.exe"
-  WinWait, ahk_exe idea64.exe
-  WinActivate
-}
-return
-
-; Outlook
-!o::
-IfWinExist, ahk_exe OUTLOOK.EXE
-{
-  WinActivate
-}
-else
-{
-  Run, "%ProgramFiles% (x86)\Microsoft Office\Office15\OUTLOOK.exe"
-}
-return
-
-; SourceTree
-!s::
-IfWinExist, ahk_exe SourceTree.exe
-{
-  WinActivate
-}
-else
-{
-  Run, "%LOCALAPPDATA%\SourceTree\SourceTree.exe"
-}
-return
-
-; VirtualBox
-!v::
-IfWinExist, ahk_exe VirtualBox.exe
-{
-  WinActivate
-}
-else
-{
-  Run, "%ProgramFiles%\Oracle\VirtualBox\VirtualBox.exe"
-}
-return
-
-; WorkFlowy
-!w::
-IfWinExist, ahk_exe WorkFlowy.exe
-{
-  WinActivate
-}
-else
-{
-  Run, "%LOCALAPPDATA%\WorkFlowy\WorkFlowy.exe"
-}
-return
-
-; Terminal
-!z::
-IfWinExist, ahk_exe mintty.exe
-{
-  WinActivate
-}
-else
-{
-  Run, "%LOCALAPPDATA%\Programs\Git\git-bash.exe"
-}
-return
