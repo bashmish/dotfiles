@@ -22,6 +22,7 @@ SetTitleMatchMode, 2
 
 ; window switch like Mac's Cmd+Tab
 >^Tab::AltTab
+<!Tab::Return ; disable Alt+Tab
 
 ; language switch like Mac's Cmd+Space
 >^Space::
@@ -54,6 +55,11 @@ return
 
 ; Terminal remappings
 #IfWinActive ahk_exe mintty.exe
+  ; disable certain hotkeys which don't work on Mac and lead to bad habits
+  +Ins::Return ; Shift+Insert
+  >^SC020::Return ; Cmd+D
+  >^SC026::Return ; Cmd+L
+
   ; copy-paste like Mac's Cmd+C and Cmd+V
   >^SC02E::Send ^{Ins} ; Cmd+C => Ctrl+Ins
   >^SC02F::Send +{Ins} ; Cmd+V => Shift+Ins
