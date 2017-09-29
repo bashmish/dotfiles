@@ -1,5 +1,11 @@
+; in case of reloading removes previous instance
+#SingleInstance force
+
 ; partial match of window title
 SetTitleMatchMode, 2
+
+; reload configuration Shift+Ctrl+Alt+R
+<+<^<!SC013::Run %A_ScriptFullPath%
 
 ;###############################################################################
 ; Mac                                                                          #
