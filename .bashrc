@@ -48,11 +48,20 @@ git_ingconfig () {
 }
 
 # reword that keeps date/author/... untouched
+# Usage for last commit:
+#   git_reword "Omg typo in my last commit!!!"
+# Usage for any commit:
+#   git_reword "Omg I made a typo two days ago, how come!" 33168722e37ffffb7a285464c1fd9966925b7435
 git_reword () {
+  if [ -z "$2" ]; then
+    local git_commit=$(git rev-parse HEAD)
+  else
+    local git_commit=$2
+  fi
   git filter-branch -f --msg-filter \
-  "if test \$GIT_COMMIT = '$1'
+  "if test \$GIT_COMMIT = '$git_commit'
   then
-      echo '$2'; else cat
+      echo '$1'; else cat
   fi"
 }
 
