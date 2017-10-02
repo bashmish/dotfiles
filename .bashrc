@@ -47,6 +47,15 @@ git_ingconfig () {
   git config user.email "mikhail.bashkirov@ing.nl"
 }
 
+# reword that keeps date/author/... untouched
+git_reword () {
+  git filter-branch -f --msg-filter \
+  "if test \$GIT_COMMIT = '$1'
+  then
+      echo '$2'; else cat
+  fi"
+}
+
 ################################################################################
 # nvm                                                                          #
 ################################################################################
