@@ -124,19 +124,18 @@ EnforceLayoutSymbol(layout, symbol)
 ; Fast switch between mostly used apps                                         #
 ;###############################################################################
 
- !a::ActivateOrRunApp("ahk_exe atom.exe", LOCALAPPDATA . "\atom\atom.exe") ; Atom
  !c::ActivateOrRunApp("- Google Chrome ahk_exe chrome.exe", LOCALAPPDATA . "\Google\Chrome\Application\chrome.exe") ; Chrome
 +!c::ActivateOrRunApp("- Chromium ahk_exe chrome.exe", LOCALAPPDATA . "\Chromium\Application\chrome.exe") ; Chromium
  !f::ActivateOrRunApp("ahk_class CabinetWClass ahk_exe explorer.exe", WINDIR . "\explorer.exe") ; File manager
-+!f::ActivateOrRunApp("ahk_exe firefox.exe", LOCALAPPDATA . "\Mozilla Firefox\firefox.exe") ; Firefox
++!f::ActivateOrRunApp("ahk_exe firefox.exe", ProgramFiles . "\Mozilla Firefox\firefox.exe") ; Firefox
  !g::ActivateOrRunApp("ahk_exe gitkraken.exe", LOCALAPPDATA . "\gitkraken\Update.exe --processStart gitkraken.exe") ; GitKraken
  !i::ActivateOrRunApp("ahk_class IEFrame", ProgramFiles . "\Internet Explorer\iexplore.exe") ; Internet Explorer
- !j::ActivateOrRunApp("ahk_exe idea64.exe", ProgramFiles . "\JetBrains\IntelliJ IDEA 2017.2.3\bin\idea64.exe") ; IntelliJ Idea
  !o::ActivateOrRunApp("ahk_exe OUTLOOK.EXE", ProgramFiles . " (x86)\Microsoft Office\Office15\OUTLOOK.exe") ; Outlook
  !s::ActivateOrRunApp("ahk_exe SourceTree.exe", LOCALAPPDATA . "\SourceTree\SourceTree.exe") ; SourceTree
- !v::ActivateOrRunApp("ahk_exe VirtualBox.exe", ProgramFiles . "\Oracle\VirtualBox\VirtualBox.exe") ; VirtualBox
- !w::ActivateOrRunApp("ahk_exe WorkFlowy.exe", LOCALAPPDATA . "\WorkFlowy\WorkFlowy.exe") ; WorkFlowy
- !z::ActivateOrRunApp("ahk_exe mintty.exe", LOCALAPPDATA . "\Programs\Git\git-bash.exe") ; Terminal
+ !u::ActivateOrRunApp("Ubuntu ahk_exe VirtualBox.exe", ProgramFiles . "\Oracle\VirtualBox\VirtualBox.exe") ; Ubuntu in VirtualBox
+ !v::ActivateOrRunApp("ahk_exe Code.exe", ProgramFiles . "\Microsoft VS Code\Code.exe") ; VSCode
+ !w::ActivateOrRunApp("ahk_exe WorkFlowy.exe", LOCALAPPDATA . "\Programs\WorkFlowy\WorkFlowy.exe") ; WorkFlowy
+ !z::ActivateOrRunApp("ahk_exe mintty.exe", ProgramFiles . "\Git\git-bash.exe") ; Terminal
 
 ActivateOrRunApp(title, app)
 {
