@@ -135,13 +135,21 @@ EnforceLayoutSymbol(layout, symbol)
  !u::ActivateOrRunApp("Ubuntu ahk_exe VirtualBox.exe", ProgramFiles . "\Oracle\VirtualBox\VirtualBox.exe") ; Ubuntu in VirtualBox
  !v::ActivateOrRunApp("ahk_exe Code.exe", ProgramFiles . "\Microsoft VS Code\Code.exe") ; VSCode
  !w::ActivateOrRunApp("ahk_exe WorkFlowy.exe", LOCALAPPDATA . "\Programs\WorkFlowy\WorkFlowy.exe") ; WorkFlowy
- !z::ActivateOrRunApp("ahk_exe mintty.exe", ProgramFiles . "\Git\git-bash.exe") ; Terminal
+ !z::ActivateOrRunApp("ahk_exe mintty.exe", ProgramFiles . "\Git\git-bash.exe", true) ; Terminal
 
-ActivateOrRunApp(title, app)
+ActivateOrRunApp(title, app, minimizable:=false)
 {
   IfWinExist, %title%
   {
-    WinActivate
+    IfWinActive, %title%
+    {
+      if minimizable
+        WinMinimize
+    }
+    else
+    {
+      WinActivate
+    }
   }
   else
   {
