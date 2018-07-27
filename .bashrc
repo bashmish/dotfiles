@@ -30,7 +30,7 @@ shopt -s autocd
 if [[ "$OSTYPE" == "darwin"* ]]; then
   alias cdp="cd /Users/bashmish/Files/Projects/"
 else
-  alias cdp="cd /media/sf_Projects/"
+  alias cdp="cd /home/bashmish/Projects"
 fi
 
 ################################################################################
@@ -43,8 +43,8 @@ git_personalconfig () {
 }
 
 git_ingconfig () {
-  git config user.name "Mikhail (M) Bashkirov"
-  git config user.email "mikhail.bashkirov@ing.nl"
+  git config user.name "👌 Mikhail Bashkirov"
+  git config user.email "mikhail.bashkirov@ing.com"
 }
 
 # reword that keeps date/author/... untouched
@@ -96,23 +96,68 @@ alias caddy="/usr/local/bin/caddy -conf $DOTFILES/Caddyfile_frontend_app"
 # proxy scripts                                                                #
 ################################################################################
 
-proxy_on () {
-  export http_proxy="http://localhost:3128"
-  export https_proxy="http://localhost:3128"
-  export ftp_proxy="http://localhost:3128"
-  export rsync_proxy="http://localhost:3128"
-  export ssh_proxy="http://localhost:3128"
-}
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  proxy_system_on () {
+    gsettings set org.gnome.system.proxy mode 'manual'
+    gsettings set org.gnome.system.proxy.http host '127.0.0.1'
+    gsettings set org.gnome.system.proxy.http port '3128'
+    gsettings set org.gnome.system.proxy.https host '127.0.0.1'
+    gsettings set org.gnome.system.proxy.https port '3128'
+    gsettings set org.gnome.system.proxy.ftp host '127.0.0.1'
+    gsettings set org.gnome.system.proxy.ftp port '3128'
+    gsettings set org.gnome.system.proxy.socks host '127.0.0.1'
+    gsettings set org.gnome.system.proxy.socks port '3128'
+    gsettings set org.gnome.system.proxy ignore-hosts "['localhost', '127.0.0.0/8', '::1', '.europe.intranet']"
+  }
 
-proxy_off () {
-  unset http_proxy
-  unset https_proxy
-  unset ftp_proxy
-  unset rsync_proxy
-  unset ssh_proxy
-}
+  proxy_system_off () {
+    gsettings set org.gnome.system.proxy mode 'none'
+  }
+
+  proxy_on () {
+    proxy_system_on
+    ing-dev proxy start
+  }
+
+  proxy_off () {
+    proxy_system_off
+    ing-dev proxy stop
+  }
+fi
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+  proxy_env_vars_on () {
+    local proxy_address_template="http://127.0.0.1:3128"
+    local no_proxy_template="localhost;127.0.0.0/8;::1;.europe.intranet"
+    export http_proxy=$proxy_address_template
+    export https_proxy=$proxy_address_template
+    export ftp_proxy=$proxy_address_template
+    export rsync_proxy=$proxy_address_template
+    export ssh_proxy=$proxy_address_template
+    export no_proxy=$no_proxy_template
+    export HTTP_PROXY=$proxy_address_template
+    export HTTPS_PROXY=$proxy_address_template
+    export FTP_PROXY=$proxy_address_template
+    export RSYNC_PROXY=$proxy_address_template
+    export SSH_PROXY=$proxy_address_template
+    export NO_PROXY=$no_proxy_template
+  }
+
+  proxy_env_vars_off () {
+    unset http_proxy
+    unset https_proxy
+    unset ftp_proxy
+    unset rsync_proxy
+    unset ssh_proxy
+    unset no_proxy
+    unset HTTP_PROXY
+    unset HTTPS_PROXY
+    unset FTP_PROXY
+    unset RSYNC_PROXY
+    unset SSH_PROXY
+    unset NO_PROXY
+  }
+
   proxy_wifi_on () {
     sudo networksetup -setwebproxystate "Wi-Fi" on
     sudo networksetup -setsecurewebproxystate "Wi-Fi" on
@@ -135,6 +180,34 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   alias resolver_on="/etc/resolver/on.sh"
   alias resolver_off="/etc/resolver/off.sh"
+
+  proxy_pm_on () {
+    mvifexists ~/_bowerrc ~/.bowerrc
+    mvifexists ~/_npmrc ~/.npmrc
+    mvifexists ~/_yarnrc ~/.yarnrc
+  }
+
+  proxy_pm_off () {
+    mvifexists ~/.bowerrc ~/_bowerrc
+    mvifexists ~/.npmrc ~/_npmrc
+    mvifexists ~/.yarnrc ~/_yarnrc
+  }
+
+  proxy_on () {
+    proxy_env_vars_on
+    proxy_wifi_on
+    proxy_ethernet_on
+    resolver_on
+    proxy_pm_on
+  }
+
+  proxy_off () {
+    proxy_env_vars_off
+    proxy_wifi_off
+    proxy_ethernet_off
+    resolver_off
+    proxy_pm_off
+  }
 fi
 
 ################################################################################
@@ -151,18 +224,6 @@ mvifexists () {
   if [ -f $1 ]; then
     mv $1 $2
   fi
-}
-
-backpmrc () {
-  mvifexists ~/.bowerrc ~/_bowerrc
-  mvifexists ~/.npmrc ~/_npmrc
-  mvifexists ~/.yarnrc ~/_yarnrc
-}
-
-unbackpmrc () {
-  mvifexists ~/_bowerrc ~/.bowerrc
-  mvifexists ~/_npmrc ~/.npmrc
-  mvifexists ~/_yarnrc ~/.yarnrc
 }
 
 reinstallnodeselenium () {
