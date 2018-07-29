@@ -70,19 +70,19 @@ add_custom_hotkey(
 
 add_custom_hotkey(
     'SmartGit',
-    'bash -c "xdotool windowactivate $(xdotool search --onlyvisible --class SmartGit | tail -1)"',
+    'bash -c "xdotool windowactivate $(xdotool search --onlyvisible --class git-cola | tail -1)"',
     '<Alt>G'
-)
-
-add_custom_hotkey(
-    'Chrome',
-    'bash -c "xdotool windowactivate $(xdotool search --onlyvisible --class Google-chrome | tail -1)"',
-    '<Alt>C'
 )
 
 add_custom_hotkey(
     'Chromium',
     'bash -c "xdotool windowactivate $(xdotool search --onlyvisible --class Chromium-browser | tail -1)"',
+    '<Alt>C'
+)
+
+add_custom_hotkey(
+    'Chrome',
+    'bash -c "xdotool windowactivate $(xdotool search --onlyvisible --class Google-chrome | tail -1)"',
     '<Shift><Alt>C'
 )
 

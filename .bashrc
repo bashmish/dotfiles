@@ -37,6 +37,8 @@ fi
 # git scripts                                                                  #
 ################################################################################
 
+alias gitcola="nohup git cola </dev/null &>/dev/null &"
+
 git_personalconfig () {
   git config user.name "Mikhail Bashkirov"
   git config user.email "bashmish@gmail.com"
