@@ -37,6 +37,8 @@ fi
 # git scripts                                                                  #
 ################################################################################
 
+alias stree='/Applications/SourceTree.app/Contents/Resources/stree'
+
 git_personalconfig () {
   git config user.name "Mikhail Bashkirov"
   git config user.email "bashmish@gmail.com"
