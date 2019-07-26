@@ -28,7 +28,7 @@ shopt -s autocd
 ################################################################################
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  alias cdp="cd /Users/bashmish/Files/Projects/"
+  alias cdp="cd ~/Files/Projects/"
 else
   alias cdp="cd /media/sf_Projects/"
 fi
