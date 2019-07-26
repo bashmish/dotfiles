@@ -99,14 +99,28 @@ alias caddy="/usr/local/bin/caddy -conf $DOTFILES/Caddyfile_frontend_app"
 ################################################################################
 
 proxy_on () {
-  export http_proxy="http://localhost:3128"
-  export https_proxy="http://localhost:3128"
-  export ftp_proxy="http://localhost:3128"
-  export rsync_proxy="http://localhost:3128"
-  export ssh_proxy="http://localhost:3128"
+  unbackpmrc
+  proxy_env_vars_on
+  proxy_wifi_on
+  proxy_ethernet_on
 }
 
 proxy_off () {
+  backpmrc
+  proxy_env_vars_off
+  proxy_wifi_off
+  proxy_ethernet_off
+}
+
+proxy_env_vars_on () {
+  export http_proxy="localhost:3128"
+  export https_proxy="localhost:3128"
+  export ftp_proxy="localhost:3128"
+  export rsync_proxy="localhost:3128"
+  export ssh_proxy="localhost:3128"
+}
+
+proxy_env_vars_off () {
   unset http_proxy
   unset https_proxy
   unset ftp_proxy
@@ -134,9 +148,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     sudo networksetup -setwebproxystate "USB 10/100/1000 LAN" off
     sudo networksetup -setsecurewebproxystate "USB 10/100/1000 LAN" off
   }
-
-  alias resolver_on="/etc/resolver/on.sh"
-  alias resolver_off="/etc/resolver/off.sh"
 fi
 
 ################################################################################
