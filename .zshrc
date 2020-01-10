@@ -1,27 +1,16 @@
 export DOTFILES=$HOME/.dotfiles
 
 ################################################################################
-# bash-it                                                                      #
+# oh-my-zsh                                                                      #
 ################################################################################
 
-export BASH_IT="$HOME/.bash_it"
+export ZSH="$HOME/.oh-my-zsh"
 
-if [ -f "$BASH_IT/bash_it.sh" ]; then
-  # theme from $BASH_IT/themes/
-  export BASH_IT_THEME='nwinkler'
-
-  # version control status checking
-  export SCM_CHECK=true
-
-  # load
-  source "$BASH_IT/bash_it.sh"
+if [ -f "$ZSH/oh-my-zsh.sh" ]; then
+  ZSH_THEME="jtriley"
+  plugins=(git)
+  source $ZSH/oh-my-zsh.sh
 fi
-
-################################################################################
-# bash                                                                         #
-################################################################################
-
-shopt -s autocd
 
 ################################################################################
 # cd scripts                                                                   #
