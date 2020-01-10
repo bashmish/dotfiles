@@ -49,6 +49,11 @@ git_ingconfig () {
   git config user.email "mikhail.bashkirov@ing.com"
 }
 
+git_raboconfig () {
+  git config user.name "Mikhail Bashkirov"
+  git config user.email "mikhail.bashkirov@rabobank.nl"
+}
+
 # reword that keeps date/author/... untouched
 # Usage for last commit:
 #   git_reword "Omg typo in my last commit!!!"
