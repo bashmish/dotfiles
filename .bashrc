@@ -89,6 +89,17 @@ polymer_virtualbox_serve () {
 alias pvbs="polymer_virtualbox_serve"
 
 ################################################################################
+# java                                                                         #
+################################################################################
+
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export PATH=$JAVA_HOME/bin:$PATH
+
+export M2_HOME="/usr/local/Cellar/maven/3.6.3/libexec"
+export PATH=$M2_HOME/bin:$PATH
+export MAVEN_OPTS="-Xms1024m -Xmx1024m"
+
+################################################################################
 # caddy scripts                                                                #
 ################################################################################
 
