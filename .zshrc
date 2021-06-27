@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 if [ -f "$ZSH/oh-my-zsh.sh" ]; then
   ZSH_THEME="jtriley"
-  plugins=(git)
+  plugins=(git you-should-use)
   source $ZSH/oh-my-zsh.sh
 fi
 

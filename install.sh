@@ -6,3 +6,5 @@ ln -s ./.dotfiles/.fixpackrc .fixpackrc
 ln -s ./.dotfiles/.tmux.conf .tmux.conf
 ln -s ./.dotfiles/.zshrc .zshrc
 source .zshrc
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
+source .zshrc
