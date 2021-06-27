@@ -13,6 +13,31 @@ if [ -f "$ZSH/oh-my-zsh.sh" ]; then
 fi
 
 ################################################################################
+# node                                                                         #
+################################################################################
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+backpmrc () {
+  mvifexists ~/.bowerrc ~/_bowerrc
+  mvifexists ~/.npmrc ~/_npmrc
+  mvifexists ~/.yarnrc ~/_yarnrc
+}
+
+unbackpmrc () {
+  mvifexists ~/_bowerrc ~/.bowerrc
+  mvifexists ~/_npmrc ~/.npmrc
+  mvifexists ~/_yarnrc ~/.yarnrc
+}
+
+reinstallnodeselenium () {
+  rm -rf ./node_modules/selenium-standalone/.selenium
+  ./node_modules/selenium-standalone/bin/selenium-standalone install
+}
+
+################################################################################
 # cd scripts                                                                   #
 ################################################################################
 
@@ -50,14 +75,6 @@ git_reword () {
       echo '$1'; else cat
   fi"
 }
-
-################################################################################
-# nvm                                                                          #
-################################################################################
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 ################################################################################
 # polymer scripts                                                              #
@@ -159,23 +176,6 @@ mvifexists () {
   if [ -f $1 ]; then
     mv $1 $2
   fi
-}
-
-backpmrc () {
-  mvifexists ~/.bowerrc ~/_bowerrc
-  mvifexists ~/.npmrc ~/_npmrc
-  mvifexists ~/.yarnrc ~/_yarnrc
-}
-
-unbackpmrc () {
-  mvifexists ~/_bowerrc ~/.bowerrc
-  mvifexists ~/_npmrc ~/.npmrc
-  mvifexists ~/_yarnrc ~/.yarnrc
-}
-
-reinstallnodeselenium () {
-  rm -rf ./node_modules/selenium-standalone/.selenium
-  ./node_modules/selenium-standalone/bin/selenium-standalone install
 }
 
 ################################################################################
