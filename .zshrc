@@ -52,6 +52,7 @@ fi
 ################################################################################
 
 alias stree='/Applications/SourceTree.app/Contents/Resources/stree'
+alias smerge='/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge'
 
 git_personalconfig () {
   git config user.name "Mikhail Bashkirov"
