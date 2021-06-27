@@ -160,8 +160,6 @@ hs () {
   history | grep $1
 }
 
-function npm-do { (PATH=$(npm bin):$PATH; eval $@;) }
-
 mvifexists () {
   if [ -f $1 ]; then
     mv $1 $2
