@@ -80,12 +80,14 @@ git_reword () {
 # java                                                                         #
 ################################################################################
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-export PATH=$JAVA_HOME/bin:$PATH
+if /usr/libexec/java_home -v 1.8 &> /dev/null; then
+  export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+  export PATH=$JAVA_HOME/bin:$PATH
 
-export M2_HOME="/usr/local/Cellar/maven/3.6.3/libexec"
-export PATH=$M2_HOME/bin:$PATH
-export MAVEN_OPTS="-Xms1024m -Xmx1024m"
+  export M2_HOME=`mvn -v | grep 'Maven home' | sed 's/Maven home: //'`
+  export PATH=$M2_HOME/bin:$PATH
+  export MAVEN_OPTS="-Xms1024m -Xmx1024m"
+fi
 
 ################################################################################
 # caddy scripts                                                                #
