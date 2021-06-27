@@ -20,19 +20,19 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-backpmrc () {
-  mvifexists ~/.bowerrc ~/_bowerrc
-  mvifexists ~/.npmrc ~/_npmrc
-  mvifexists ~/.yarnrc ~/_yarnrc
+backup_pm_rc () {
+  mv_if_exists ~/.bowerrc ~/_bowerrc
+  mv_if_exists ~/.npmrc ~/_npmrc
+  mv_if_exists ~/.yarnrc ~/_yarnrc
 }
 
-unbackpmrc () {
-  mvifexists ~/_bowerrc ~/.bowerrc
-  mvifexists ~/_npmrc ~/.npmrc
-  mvifexists ~/_yarnrc ~/.yarnrc
+unbackup_pm_rc () {
+  mv_if_exists ~/_bowerrc ~/.bowerrc
+  mv_if_exists ~/_npmrc ~/.npmrc
+  mv_if_exists ~/_yarnrc ~/.yarnrc
 }
 
-reinstallnodeselenium () {
+reinstall_node_selenium () {
   rm -rf ./node_modules/selenium-standalone/.selenium
   ./node_modules/selenium-standalone/bin/selenium-standalone install
 }
@@ -54,7 +54,7 @@ fi
 alias stree='/Applications/SourceTree.app/Contents/Resources/stree'
 alias smerge='/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge'
 
-git_personalconfig () {
+git_config_personal () {
   git config user.name "Mikhail Bashkirov"
   git config user.email "bashmish@gmail.com"
 }
@@ -101,14 +101,14 @@ alias caddy="/usr/local/bin/caddy -conf $DOTFILES/Caddyfile_frontend_app"
 ################################################################################
 
 proxy_on () {
-  unbackpmrc
+  unbackup_pm_rc
   proxy_env_vars_on
   proxy_wifi_on
   proxy_ethernet_on
 }
 
 proxy_off () {
-  backpmrc
+  backup_pm_rc
   proxy_env_vars_off
   proxy_wifi_off
   proxy_ethernet_off
@@ -160,7 +160,7 @@ hs () {
   history | grep $1
 }
 
-mvifexists () {
+mv_if_exists () {
   if [ -f $1 ]; then
     mv $1 $2
   fi
