@@ -68,7 +68,6 @@ return
   >^SC013::Send ^{SC026} ; Cmd+R => Ctrl+L
 
   ; tmux controls
-  ; (Ctrl+\ and numbers are used because work with any language layout)
   >^SC014::  Send {Ctrl Down}{\}{Ctrl Up}{1} ; Cmd+T
   >^SC011::  Send {Ctrl Down}{\}{Ctrl Up}{2} ; Cmd+W
   <!>^Right::Send {Ctrl Down}{\}{Ctrl Up}{3} ; Alt+Cmd+Right
