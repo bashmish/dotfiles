@@ -71,10 +71,10 @@ return
   ; (Ctrl+\ and numbers are used because work with any language layout)
   >^SC014::  Send {Ctrl Down}{\}{Ctrl Up}{1} ; Cmd+T
   >^SC011::  Send {Ctrl Down}{\}{Ctrl Up}{2} ; Cmd+W
-  >^SC027::  Send {Ctrl Down}{\}{Ctrl Up}{3} ; Cmd+:
-  >^SC028::  Send {Ctrl Down}{\}{Ctrl Up}{4} ; Cmd+"
-  <!>^Left:: Send {Ctrl Down}{\}{Ctrl Up}{5} ; Alt+Cmd+Left
-  <!>^Right::Send {Ctrl Down}{\}{Ctrl Up}{6} ; Alt+Cmd+Right
+  <!>^Right::Send {Ctrl Down}{\}{Ctrl Up}{3} ; Alt+Cmd+Right
+  <!>^Left:: Send {Ctrl Down}{\}{Ctrl Up}{4} ; Alt+Cmd+Left
+  >^SC027::  Send {Ctrl Down}{\}{Ctrl Up}{5} ; Cmd+:
+  >^SC028::  Send {Ctrl Down}{\}{Ctrl Up}{6} ; Cmd+"
   <!Tab::    Send {Ctrl Down}{\}{Ctrl Up}{7} ; Alt+Tab
 #IfWinActive
 
