@@ -2,6 +2,7 @@ cd ~
 xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install tmux
+brew install fnm
 git clone https://github.com/ohmyzsh/ohmyzsh.git .oh-my-zsh
 ln -s ./.dotfiles/.fixpackrc .fixpackrc
 ln -s ./.dotfiles/.p10k.zsh .p10k.zsh
