@@ -75,6 +75,7 @@ return
   >^SC027::  Send {Ctrl Down}{\}{Ctrl Up}{5} ; Cmd+:
   >^SC028::  Send {Ctrl Down}{\}{Ctrl Up}{6} ; Cmd+"
   <!Tab::    Send {Ctrl Down}{\}{Ctrl Up}{7} ; Alt+Tab
+  <+<!Tab::  Send {Ctrl Down}{\}{Ctrl Up}{8} ; Shift+Alt+Tab
 #IfWinActive
 
 ; special symbols remappings like on Mac's Russian default layout
